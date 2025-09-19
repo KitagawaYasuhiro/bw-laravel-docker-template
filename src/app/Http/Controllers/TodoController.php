@@ -20,4 +20,15 @@ class TodoController extends Controller
     {
         return view('todo.create');
     }
+
+    public function store(Request $reqest)
+    {
+        $content = $reqest->input('content');
+
+        $todo = new Todo();
+        $todo->content = $content;
+        $todo->save();
+
+        return redirect()->route('todo.index');
+    }
 }
